@@ -1,0 +1,21 @@
+/* Connection status changes */
+.connection {
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 0px;
+}
+
+.connection .online {
+  padding: 0.3em 0;
+  background-color: #00bfa5;
+  transition: .2s ease-out;
+  display: none;
+}
+
+.connection .offline {
+  padding: 0.3em 0;
+  background-color: #d84315;
+  transition: .2s ease-out;
+  display: none;
+}

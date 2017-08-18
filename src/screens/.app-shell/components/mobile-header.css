@@ -1,0 +1,15 @@
+nav {
+  background-color: #1565c0;
+}
+
+.nav-content {
+  padding-bottom: 10px;
+}
+
+nav .btn i {
+  line-height: inherit;
+}
+
+.navbar {
+  flex: none;
+}

@@ -1,0 +1,73 @@
+.main {
+  background-color: white;
+  overflow-y: auto;   
+  max-height: 100vh;   /* for 100% viewport height */
+  -webkit-overflow-scrolling: touch; /* mobile safari */
+
+  flex: 1;
+  overflow-y: auto; /* make element scrollable  */
+}
+
+/* main content: event styling */·
+.event-month {
+  font-size: 1.3em;
+  padding: 0.2em;
+}
+
+.row.event-row {
+  margin-bottom: 0;
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.event-date {
+  color: rgb(198, 205, 222);
+  background-color: rgb(243, 247, 250);
+  padding: 0.4em 0.2rem !important;
+}
+
+.event-date-month {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.event-row .col.event-brief {
+  padding: 0.4em 0 0.2rem 0.5em;
+}
+
+.event-title {
+  font-size: 1.3em;
+  line-height: 2em;
+}
+
+.event-location {
+  color: rgb(198, 205, 222);
+}
+
+.event-row .col.event-status {
+  line-height: 4em;
+  padding: 0.4em 0 0 0;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.event-status-center-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.event-status-image {
+    vertical-align: middle;
+}
+
+.event-status-actions {
+  text-align: center;  /* align the inline(-block) elements horizontally */
+  font: 0/0 a;         /* remove the gap between inline(-block) elements */
+  align-items: stretch;
+  margin-top: auto;    /* Safari vert center hack */
+  margin-bottom: auto; /* Safari vert center hack */
+}
+
+.event-status-actions .btn {
+  padding: 0 1.3rem;
+}

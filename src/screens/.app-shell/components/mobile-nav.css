@@ -1,0 +1,24 @@
+/* Footer */
+.mobile-nav {
+  flex: none;
+  position: absolute;
+  bottom: 0;
+  height: 3.5rem;
+}
+
+/* prevent crashing of other objects into footer */
+main {
+  padding-bottom: 56px;
+}
+
+.mobile-nav .row {
+ margin-bottom: 0;
+}
+
+.mobile-nav a.active i {
+  background: #238ABF;
+}
+
+.mobile-nav a i {
+  font-size: 2.5rem;
+}
