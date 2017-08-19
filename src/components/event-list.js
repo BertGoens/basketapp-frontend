@@ -104,6 +104,7 @@ const EventStatus = (props) => {
   )
 }
 
+// eslint-disable-next-line
 const EventStatusActions = (props) => {
   return (
     <div className="event-status-actions">

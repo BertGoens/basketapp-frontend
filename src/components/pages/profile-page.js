@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Profile = (props) => {
+export const ProfilePage = (props) => {
   return (
     <div className="row s12">
       <form method="POST" action="/profile" className="col s12">

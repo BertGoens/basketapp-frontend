@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom'
 import React from 'react';
 
-export const ResetPasswordLink = (props) => {
+export const RegisterLink = (props) => {
   return (
     <div className="row center-align">
       <div className="col s3"></div>
-      <Link to="/reset-password">
+
+      <Link to='/auth/register'>
         <button className='col s6 btn btn-large waves-effect'>
-          <i className="material-icons left">lock_outline</i>
-          Reset Password
-        </button>
+          <i className="material-icons left">perm_identity</i>
+          Register
+      </button>
       </Link>
       <div className="col s3"></div>
     </div>

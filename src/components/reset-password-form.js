@@ -1,11 +1,8 @@
-import {styles} from '../../components/style.css'
-
-import { LoginLink, ResetPasswordLink } from '../../components'
 import React from 'react';
 
-export const ResetPasswordContent = (props) => {
+export const ResetPasswordForm = (props) => {
   return (
-    <div className="container" style={{styles}}>
+    <div className="container">
       <div className="z-depth-1 grey lighten-4 row form-action">
         <form className="col s12" method="post">
           <div className='row'>
@@ -25,11 +22,6 @@ export const ResetPasswordContent = (props) => {
             <div className="col s3"></div>
           </div>
         </form>
-      </div>
-
-      <div className="section">
-        <LoginLink />
-        <ResetPasswordLink />
       </div>
     </div>
   )

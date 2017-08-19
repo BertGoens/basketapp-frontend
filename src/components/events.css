@@ -1,13 +1,3 @@
-.main {
-  background-color: white;
-  overflow-y: auto;   
-  max-height: 100vh;   /* for 100% viewport height */
-  -webkit-overflow-scrolling: touch; /* mobile safari */
-
-  flex: 1;
-  overflow-y: auto; /* make element scrollable  */
-}
-
 /* main content: event styling */·
 .event-month {
   font-size: 1.3em;

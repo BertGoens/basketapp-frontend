@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Settings = (props) => {
+export const SettingsPage = (props) => {
   return (
     <div className="row s12">
       <form action="/logout" method="POST" className="col s12">

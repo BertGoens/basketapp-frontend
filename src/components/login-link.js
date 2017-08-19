@@ -5,7 +5,7 @@ export const LoginLink = (props) => {
   return (
     <div className="row center-align">
       <div className="col s3"></div>
-      <Link to="/login">
+      <Link to="/auth/login">
         <button className='col s6 btn btn-large waves-effect'>
           <i className="material-icons left">account_circle</i>
           Login

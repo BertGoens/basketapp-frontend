@@ -27,24 +27,36 @@ export default function setupConnectionStatus() {
 
     function handleOffline() {
       // Hide online message
-      document.querySelector('.online').style.display = 'none'
+      let onlineMessage = document.querySelector('.online')
+      if (onlineMessage) {
+        onlineMessage.style.display = 'none'
+      }
       // Show offline message
-      document.querySelector('.offline').style.display = 'block'
+      let offlineMessage = document.querySelector('.offline')
+      if (offlineMessage) {
+        offlineMessage.style.display = 'block'
+      }
     }
 
     function handleOnline() {
       // Hide offline message
-      document.querySelector('.offline').style.display = 'none'
-      // Show online message
-      let onlineDiv = document.querySelector('.online')
-      onlineDiv.style.opacity = 1
-      onlineDiv.style.display = 'block'
+      let offlineMessage = document.querySelector('.offline')
+      if (offlineMessage) {
+        offlineMessage.style.display = 'none'
+      }
 
-      // Hide the element after some time
-      let delayMillis = 1000; //1 second
-      setTimeout(function () {
-        fadeOut(onlineDiv)
-      }, delayMillis);
+      // Show online message
+      let onlineMessage = document.querySelector('.online')
+      if (onlineMessage) {
+        onlineMessage.style.opacity = 1
+        onlineMessage.style.display = 'block'
+
+        // Hide the element after some time
+        let delayMillis = 1000; //1 second
+        setTimeout(function () {
+          fadeOut(onlineMessage)
+        }, delayMillis);
+      }
     }
 
     window.addEventListener('online', function () {

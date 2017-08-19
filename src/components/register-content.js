@@ -1,9 +1,8 @@
 import {styles} from '../../components/style.css'
 
-import { LoginLink, ResetPasswordLink } from '../../components'
 import React from 'react';
 
-export const RegisterContent = (props) => {
+export const RegisterForm = (props) => {
   return (
     <div className="container" style={{styles}}>
       <div className="z-depth-1 grey lighten-4 row form-action">
@@ -33,11 +32,6 @@ export const RegisterContent = (props) => {
             <div className="col s3"></div>
           </div>
         </form>
-      </div>
-
-      <div className="section">
-        <LoginLink />
-        <ResetPasswordLink />
       </div>
     </div>
   )
