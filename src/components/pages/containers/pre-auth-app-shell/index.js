@@ -8,7 +8,7 @@ import '../../../../components/app-shell.css'
 import { MobileHeader } from '../../../../components/mobile-header'
 import { ConnectionStatus } from '../../../../components/connection-status'
 
-import { LoginPage, RegisterPage, ResetPasswordPage } from '../../../pages'
+import { LoginPage, RegisterPage, ResetPasswordPage, NotFoundPage } from '../../../pages'
 
 import connectionStatus from '../../../../assets/js/connectionStatus'
 
@@ -21,11 +21,11 @@ export const PreAuthAppShell = (props) => {
       <ConnectionStatus />
       <main>
         <Switch>
-        <Route path='/auth/' component={LoginPage} />
+          <Route path='/auth/' component={LoginPage} />
           <Route path='/auth/login' render={() => <LoginPage />} />
           <Route path='/auth/register' component={RegisterPage} />
           <Route path='/auth/reset-password' component={ResetPasswordPage} />
-          {/*<Route component={'NotFound'} />*/}
+          <Route component={NotFoundPage} />
         </Switch>
       </main>
     </div>
