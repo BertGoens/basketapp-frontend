@@ -1,14 +1,7 @@
 /* Footer */
 .mobile-nav {
   flex: none;
-  position: absolute;
-  bottom: 0;
-  height: 3.5rem;
-}
-
-/* prevent crashing of other objects into footer */
-main {
-  padding-bottom: 56px;
+ /*  height: 3.5rem; */
 }
 
 .mobile-nav .row {
