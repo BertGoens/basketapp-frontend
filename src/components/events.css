@@ -56,6 +56,8 @@
   align-items: stretch;
   margin-top: auto;    /* Safari vert center hack */
   margin-bottom: auto; /* Safari vert center hack */
+  display: flex;
+  flex-direction: row;
 }
 
 .event-status-actions .btn {
