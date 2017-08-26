@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ErrorSummary } from './error-summary'
 
 export const ProfileForm = ({
   onSubmit,
@@ -10,7 +11,7 @@ export const ProfileForm = ({
     <div className="row s12">
       <form action="/profile" onSubmit={onSubmit} className="col s12">
 
-        {errors.summary && <p className="error-message">{errors.summary}</p>}
+        {errors.summary && <ErrorSummary errorSummary={errors.summary} />}
 
         <div className="input-field col s12">
           <i className="material-icons prefix">account_circle</i>

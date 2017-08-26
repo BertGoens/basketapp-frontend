@@ -59,8 +59,13 @@ export class ProfilePage extends React.Component {
         // failure
 
         // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
+        let errors
+        if (xhr.response) {
+          errors = xhr.response.errors ? xhr.response.errors : {};
+          errors.summary = xhr.response.message;
+        } else {
+          errors = { summary: '🚧 Server unavailable 🚧' }
+        }
 
         this.setState({
           errors
