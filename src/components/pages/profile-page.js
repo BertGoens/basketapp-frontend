@@ -1,62 +1,105 @@
 import React from 'react';
+import setupProfileDateOfBirth from '../../assets/js/setupProfile'
+import { ProfileForm } from '../profile-form'
 
-export const ProfilePage = (props) => {
-  return (
-    <div className="row s12">
-      <form method="POST" action="/profile" className="col s12">
-        <div className="input-field col s12">
-          <i className="material-icons prefix">account_circle</i>
-          <input placeholder="" value="" name="first_name" id="first_name" type="text" className="validate">
-          </input>
-          <label htmlFor="first_name">First Name</label>
+export class ProfilePage extends React.Component {
+  /**
+  * Class constructor.
+  */
+  constructor(props) {
+    super(props);
 
-        </div>
-        <div className="input-field col s12">
-          <i className="material-icons prefix">account_circle</i>
-          <input placeholder="" value="" name="last_name" id="last_name" type="text" className="validate">
-          </input>
-          <label htmlFor="last_name">Last Name</label>
+    // set the initial component state
+    this.state = {
+      errors: {},
+      user: {
+        first_name: '',
+        last_name: '',
+        email: '',
+        cellphone: '',
+        sex: '',
+        date_of_birth: ''
+      }
+    };
 
-        </div>
-        <div className="input-field col s12">
-          <i className="material-icons prefix">email</i>
-          <input placeholder="" value="" name="email" id="email" type="email" className="validate">
-          </input>
-          <label htmlFor="email">Email</label>
+    this.processForm = this.processForm.bind(this);
+    this.changeUser = this.changeUser.bind(this);
+  }
 
-        </div>
-        <div className="input-field col s12">
-          <i className="material-icons prefix">phone</i>
-          <input placeholder="" value="" name="cellphone" id="icon_telephone" type="tel" className="validate">
-          </input>
-          <label htmlFor="icon_telephone">Telephone</label>
+  /**
+   * Process the form.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  processForm(event) {
+    // prevent default action. in this case, action is the form submission event
+    event.preventDefault();
 
-        </div>
-        <div className="input-field col s12">
-          <i className="material-icons prefix">perm_identity</i>
-          <select name="sex">
+    // create a string for an HTTP body message
+    const email = encodeURIComponent(this.state.user.email);
+    const password = encodeURIComponent(this.state.user.password);
+    const formData = `email=${email}&password=${password}`;
 
-          </select>
-          <label>Sex</label>
-        </div>
-        <div className="input-field col s12">
-          <i className="material-icons prefix">today</i>
-          <label htmlFor="birthdate" className="">Birthdate</label>
-          <input id="birthdate" name="date_of_birth" type="text" className="datepicker picker__input"
-            readOnly="" tabIndex="-1" aria-haspopup="true"
-            aria-readonly="false" aria-owns="birthdate_root"
-            data-value="=">
-          </input>
-        </div>
+    // create an AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', '/auth/login');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        // success
 
-        <div>
-          <div className="col s12 center-align">
-            <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-              <i className="material-icons right">done</i>
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  )
+        // change the component-container state
+        this.setState({
+          errors: {}
+        });
+
+        console.log('The form is valid');
+      } else {
+        // failure
+
+        // change the component state
+        const errors = xhr.response.errors ? xhr.response.errors : {};
+        errors.summary = xhr.response.message;
+
+        this.setState({
+          errors
+        });
+      }
+    });
+    xhr.send(formData);
+  }
+
+  /**
+   * Change the user object.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  changeUser(event) {
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+
+    this.setState({
+      user
+    });
+  }
+
+  componentDidMount() {
+    setupProfileDateOfBirth();
+  }
+
+  /**
+  * Render the component.
+  */
+  render() {
+    return (
+      <ProfileForm
+        onSubmit={this.processForm}
+        onChange={this.changeUser}
+        errors={this.state.errors}
+        user={this.state.user}
+      />
+    )
+  }
 }
