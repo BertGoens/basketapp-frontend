@@ -21,7 +21,7 @@ export const PreAuthAppShell = (props) => {
       <ConnectionStatus />
       <main>
         <Switch>
-          <Route path='/auth/' component={LoginPage} />
+          <Route exact path='/auth/' component={LoginPage} />
           <Route path='/auth/login' render={() => <LoginPage />} />
           <Route path='/auth/register' component={RegisterPage} />
           <Route path='/auth/reset-password' component={ResetPasswordPage} />
