@@ -8,7 +8,7 @@ export const MobileHeader = (props) => {
     <div className="navbar">
       <nav className="nav-extended">
         <div className="nav-wrapper">
-          <Link to='/' className="brand-logo">{props.appTitle}</Link>
+          <Link to='/' className="brand-logo truncate">{props.appTitle}</Link>
         </div>
       </nav>
     </div>
