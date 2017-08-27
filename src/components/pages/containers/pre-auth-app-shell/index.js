@@ -13,7 +13,6 @@ import { LoginPage, RegisterPage, ResetPasswordPage, NotFoundPage } from '../../
 import connectionStatus from '../../../../assets/js/connectionStatus'
 
 export const PreAuthAppShell = (props) => {
-  console.info('props ', props)
   const appTitle = props.location.pathname
   return (
     <div className='app'>

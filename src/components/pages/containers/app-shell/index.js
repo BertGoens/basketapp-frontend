@@ -21,7 +21,6 @@ function getTitle(props) {
 }
 
 export const AppShell = (props) => {
-  console.info('props ', props)
   const appTitle = getTitle(props)
   return (
     <div className='app'>
