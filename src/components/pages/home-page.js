@@ -14,7 +14,7 @@ export class HomePage extends React.Component {
     // set the initial component state
     this.state = {
       errors: {},
-      events: {},
+      events: [],
       lastMonth: null,
     };
 
@@ -70,12 +70,14 @@ export class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <Event
-          onChange={this.postEventStatusUpdate}
-          errors={this.state.errors}
-          event={this.state.events[0]}
-          lastMonth={this.state.lastMonth}
-        />
+        {this.state.events.map(function (event) {
+          return <Event
+            onChange={this.postEventStatusUpdate}
+            errors={this.state.errors}
+            event={event}
+            lastMonth={this.state.lastMonth}
+          />;
+        })}
       </div>
     );
   }
