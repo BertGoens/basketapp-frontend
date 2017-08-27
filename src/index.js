@@ -12,6 +12,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/auth" render={PreAuthAppShell} />
+      <Route path="/api" />
       <Route path="/" render={AppShell} />
     </Switch>
   </BrowserRouter >,
