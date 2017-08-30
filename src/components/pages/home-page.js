@@ -43,16 +43,20 @@ export class HomePage extends React.Component {
     let myRequest = new Request(url, myInit);
 
     fetch(myRequest)
-      .then((data) => {
-        data.json()
+      .then((request) => {
+        if (!request.ok) {
+          throw new Error(request.statusText)
+        }
+        return request.json()
       })
       // Change component state
       .then((data) => {
         // TODO work with cache
-        this.setState({ events: data.results })
-      }).catch((error) => {
-        if (!error.summary) {
-          error.summary = '🚧 Server unavailable. 🚧'
+        this.setState({ events: data })
+      })
+      .catch((error) => {
+        if (!error.message) {
+          error.message = '🚧 Server unavailable. 🚧'
         }
         this.setState({
           errors: error
@@ -68,17 +72,21 @@ export class HomePage extends React.Component {
    * Render the component.
    */
   render() {
+    var that = this
     return (
-      <div>
-        {this.state.events.map(function (event) {
-          return <Event
-            onChange={this.postEventStatusUpdate}
-            errors={this.state.errors}
-            event={event}
-            lastMonth={this.state.lastMonth}
-          />;
-        })}
-      </div>
+      <div >
+        {
+          this.state.events.map(function (event) {
+            return <Event
+              onChange={that.postEventStatusUpdate}
+              errorMessage={that.state.errors.message}
+              event={event}
+              lastMonth={that.state.lastMonth}
+              key={event.eventId}
+            />;
+          })
+        }
+      </div >
     );
   }
 }

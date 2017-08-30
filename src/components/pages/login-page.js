@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { LoginForm } from '../login-form'
 import { RegisterLink } from '../register-link'
 import { ResetPasswordLink } from '../reset-password-link'
@@ -9,8 +8,8 @@ export class LoginPage extends React.Component {
   /**
    * Class constructor.
    */
-  constructor(props) {
-    super(props);
+  constructor(props, history) {
+    super(props, history);
 
     // set the initial component state
     this.state = {
@@ -53,7 +52,15 @@ export class LoginPage extends React.Component {
           errors: {}
         });
 
-        console.log('The form is valid');
+        // TODO Display login message
+        console.log(xhr.response.message)
+
+        // Save user
+        localStorage.setItem('user', xhr.response.user)
+
+        // Make a redirect
+        this.props.history.replace('/home') 
+
       } else {
         // failure
 

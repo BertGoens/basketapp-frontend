@@ -67,6 +67,14 @@ export class RegisterPage extends React.Component {
           errors: {}
         });
 
+        // TODO Display login message
+        console.log(xhr.response.message)
+
+        // Save user object
+        localStorage.setItem('user', xhr.response.user)
+
+        // Make a redirect
+        this.props.history.replace('/home')
       } else {
         // failure
 

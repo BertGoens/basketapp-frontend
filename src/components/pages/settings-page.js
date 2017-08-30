@@ -45,6 +45,12 @@ export class SettingsPage extends React.Component {
           errors: {}
         });
 
+        // Display login message
+        console.log(xhr.response.message)
+
+        // Make a redirect
+        this.props.history.replace('/auth/login')
+
       } else {
         // failure
 

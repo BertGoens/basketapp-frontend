@@ -11,15 +11,7 @@ export class ProfilePage extends React.Component {
 
     // set the initial component state
     this.state = {
-      errors: {},
-      user: {
-        first_name: '',
-        last_name: '',
-        email: '',
-        cellphone: '',
-        sex: '',
-        date_of_birth: ''
-      }
+      errors: {}
     };
 
     this.processForm = this.processForm.bind(this);
@@ -42,7 +34,7 @@ export class ProfilePage extends React.Component {
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
+    xhr.open('post', '/api/profile');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
@@ -54,7 +46,7 @@ export class ProfilePage extends React.Component {
           errors: {}
         });
 
-        console.log('The form is valid');
+        localStorage.setItem('user', xhr.response.user)
       } else {
         // failure
 
@@ -62,9 +54,9 @@ export class ProfilePage extends React.Component {
         let errors
         if (xhr.response) {
           errors = xhr.response.errors ? xhr.response.errors : {};
-          errors.summary = xhr.response.message;
+          errors.message = xhr.response.message;
         } else {
-          errors = { summary: '🚧 Server unavailable 🚧' }
+          errors = { message: '🚧 Server unavailable 🚧' }
         }
 
         this.setState({

@@ -29,7 +29,7 @@ export const LoginForm = ({
           <div className='row'>
             <div className='input-field col s12'>
               <i className="tiny material-icons prefix">lock</i>
-              <input className='validate' type='password' name='password' id='password' pattern=".{0}|.{8,50}" required
+              <input className='validate' type='password' name='password' id='password' pattern=".{0}|.{4,50}" required
                 onChange={onChange}
                 value={user.password}
               />

@@ -1,41 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import moment from 'moment'
 import { ErrorSummary } from './error-summary'
 
-const failEvent = {
-  event_start_datetime: new Date(),
-  title: 'Title',
-  location: 'Location',
-  eventStatus: 'unknown'
-}
-
-export const Event = ({ onChange, errors, event, lastMonth }) => {
-  console.dir(event)
-
-  if (!event) {
-    // fall back
-    event = failEvent
-  }
-
-  const startDateTime = event.event_start_datetime;
-
-  const startTime = moment(startDateTime).format('HH:mm')
-  const dayNumber = moment(startDateTime).format('D')
-  const dayName = moment(startDateTime).format('ddd')
-
-  const monthName = moment(event.event_start_datetime).format('MMMM')
-
+export const Event = ({ onChange, errorMessage, event, lastMonth }) => {
   return (
     <div>
-      {errors.summary && <ErrorSummary errorSummary={errors.summary} />}
-      {monthName !== lastMonth && <EventMonth monthName={monthName} />}
+      {errorMessage && <ErrorSummary errorSummary={errorMessage} />}
+      {event.monthName !== lastMonth && <EventMonth monthName={event.monthName} />}
+
       < EventDisplay
         event={event}
-        dayNumber={dayNumber}
-        dayShortName={dayName}
-        startTime={startTime}
+        key={event.eventId}
       />
     </div>
   )
@@ -55,9 +31,9 @@ const EventDisplay = ({ event, dayNumber, dayShortName, startTime }) => {
 
       <div key={event.id} className="row event-row">
         <div className="event-date col s3">
-          <p className="left-align">{dayNumber}</p>
-          <p className="center-align event-date-month">{dayShortName}</p>
-          <p className="center-align">{startTime}</p>
+          <p className="left-align">{event.dayNumber}</p>
+          <p className="center-align event-date-month">{event.dayShortName}</p>
+          <p className="center-align">{event.startTime}</p>
         </div>
         <div className="col s7 event-brief">
           <p className="event-title truncate">{event.title}</p>

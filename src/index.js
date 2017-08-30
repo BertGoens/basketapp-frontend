@@ -11,7 +11,7 @@ import registerServiceWorker from './assets/js/registerServiceWorker';
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/auth" render={PreAuthAppShell} />
+      <Route path="/auth" component={PreAuthAppShell} />
       <Route path="/api" />
       <Route path="/" render={AppShell} />
     </Switch>
