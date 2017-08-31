@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorSummary } from '../error-summary'
+import { Error } from '../error'
 
 export class SettingsPage extends React.Component {
   /**
@@ -48,6 +48,8 @@ export class SettingsPage extends React.Component {
         // Display login message
         console.log(xhr.response.message)
 
+        localStorage.removeItem('user')
+
         // Make a redirect
         this.props.history.replace('/auth/login')
 
@@ -77,7 +79,7 @@ export class SettingsPage extends React.Component {
     return (
       <div className="row s12">
 
-        {this.state.errors && this.state.errors.summary && <ErrorSummary errorSummary={this.state.errors.summary} />}
+        {this.state.errors && this.state.errors.message && <Error message={this.state.errors.message} />}
 
         <form action="/auth/logout" method="POST" onSubmit={this.processForm} className="col s12">
           <div className="input-field col s12 center-align">

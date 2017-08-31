@@ -11,7 +11,8 @@ export class ProfilePage extends React.Component {
 
     // set the initial component state
     this.state = {
-      errors: {}
+      errors: {},
+      user: JSON.parse(localStorage.getItem('user'))
     };
 
     this.processForm = this.processForm.bind(this);
@@ -28,9 +29,22 @@ export class ProfilePage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
+    const first_name = encodeURIComponent(this.state.user.individual_first_name);
+    const last_name = encodeURIComponent(this.state.user.individual_last_name);
+    const email = encodeURIComponent(this.state.user.individual_email);
+    const cellphone = encodeURIComponent(this.state.user.individual_cellphone);
+    const sex = encodeURIComponent(this.state.user.individual_sex);
+    const date_of_birth = encodeURIComponent(this.state.user.individual_date_of_birth);
+
+    const formData = 
+    `
+    first_name=${first_name}
+    &last_name=${last_name}
+    &email=${email}
+    &cellphone=${cellphone}
+    &sex=${sex}
+    &date_of_birth=${date_of_birth}
+    `;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -46,7 +60,8 @@ export class ProfilePage extends React.Component {
           errors: {}
         });
 
-        localStorage.setItem('user', xhr.response.user)
+        alert('success')
+        localStorage.setItem('user', JSON.stringify(xhr.response.user))
       } else {
         // failure
 

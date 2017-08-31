@@ -53,13 +53,13 @@ export class LoginPage extends React.Component {
         });
 
         // TODO Display login message
-        console.log(xhr.response.message)
+        alert(xhr.response.message)
 
         // Save user
-        localStorage.setItem('user', xhr.response.user)
+        localStorage.setItem('user', JSON.stringify(xhr.response.user))
 
         // Make a redirect
-        this.props.history.replace('/home') 
+        this.props.history.replace('/home')
 
       } else {
         // failure

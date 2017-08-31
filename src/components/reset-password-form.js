@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ErrorSummary } from './error-summary'
+import { Error } from './error'
 
 export const ResetPasswordForm = ({
   onSubmit,
@@ -11,7 +11,7 @@ export const ResetPasswordForm = ({
     <div className="container">
       <div className="z-depth-1 grey lighten-4 row form-action">
 
-        {errors.summary && <ErrorSummary errorSummary={errors.summary} />}
+        {errors.message && <Error message={errors.message} />}
 
         <form className="col s12" onSubmit={onSubmit} method="post">
           <div className='row'>

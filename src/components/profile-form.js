@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ErrorSummary } from './error-summary'
+import { Error } from './error'
 
 export const ProfileForm = ({
   onSubmit,
@@ -11,15 +11,15 @@ export const ProfileForm = ({
     <div className="row s12">
       <form action="/profile" onSubmit={onSubmit} className="col s12">
 
-        {errors.summary && <ErrorSummary errorSummary={errors.summary} />}
+        {errors.message && <Error message={errors.message} />}
 
         <div className="input-field col s12">
           <i className="material-icons prefix">account_circle</i>
           <input
             name="first_name" id="first_name" type="text" className="validate"
-            placeholder={user.first_name}
+            placeholder={user.individual_first_name}
             onChange={onChange}
-            value={user.first_name}
+            
           >
           </input>
           <label htmlFor="first_name" data-error={errors.first_name}>First Name</label>
@@ -28,9 +28,9 @@ export const ProfileForm = ({
         <div className="input-field col s12">
           <i className="material-icons prefix">account_circle</i>
           <input name="last_name" id="last_name" type="text" className="validate"
-            placeholder={user.last_name}
+            placeholder={user.individual_last_name}
             onChange={onChange}
-            value={user.last_name}
+            value={user.individual_last_name}
           >
           </input>
           <label htmlFor="last_name" data-error={errors.last_name} >Last Name</label>
@@ -39,9 +39,9 @@ export const ProfileForm = ({
         <div className="input-field col s12">
           <i className="material-icons prefix">email</i>
           <input name="email" id="email" type="email" className="validate"
-            placeholder={user.email}
+            placeholder={user.individual_email}
             onChange={onChange}
-            value={user.email}
+            value={user.individual_email}
           >
           </input>
           <label htmlFor="email" data-error={errors.email} >Email</label>
@@ -50,9 +50,9 @@ export const ProfileForm = ({
         <div className="input-field col s12">
           <i className="material-icons prefix">phone</i>
           <input name="cellphone" id="icon_telephone" type="tel" className="validate"
-            placeholder={user.cellphone}
+            placeholder={user.individual_cellphone}
             onChange={onChange}
-            value={user.cellphone}
+            value={user.individual_cellphone}
           >
           </input>
           <label htmlFor="icon_telephone" data-error={errors.cellphone}>Telephone</label>

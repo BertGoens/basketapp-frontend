@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ErrorSummary } from './error-summary'
+import { Error } from './error'
 
 export const Event = ({ onChange, errorMessage, event, lastMonth }) => {
   return (
     <div>
-      {errorMessage && <ErrorSummary errorSummary={errorMessage} />}
+      {errorMessage && <Error message={errorMessage} />}
       {event.monthName !== lastMonth && <EventMonth monthName={event.monthName} />}
 
       < EventDisplay
