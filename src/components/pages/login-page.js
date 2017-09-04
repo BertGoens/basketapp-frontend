@@ -65,19 +65,16 @@ export class LoginPage extends React.Component {
         // failure
 
         // change the component state
-        let errors
-        if (xhr.response) {
-          errors = xhr.response.errors ? xhr.response.errors : {};
-          errors.summary = xhr.response.message;
-        } else {
-          errors = { summary: '🚧 Server unavailable 🚧' }
-        }
-
         this.setState({
-          errors
+          errors : xhr.response ? xhr.response.errors : { message: '🚧 Server unavailable 🚧' }
         });
       }
     });
+    xhr.addEventListener('error', function () {
+      this.setState({
+        errors: { message: '🚧 Server unavailable 🚧' }
+      });
+    })
     xhr.send(formData);
   }
 

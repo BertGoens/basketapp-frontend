@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Error = ({
+export const ErrorMessage = ({
   message,
 }) => {
   return (
@@ -11,6 +11,6 @@ export const Error = ({
   )
 }
 
-Error.propTypes = {
+ErrorMessage.propTypes = {
   errorMessage: PropTypes.string.isRequired
 };

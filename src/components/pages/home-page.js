@@ -3,6 +3,7 @@ import '../../components/events.css'
 import React from 'react';
 
 import { Event } from '../../components/event-list'
+import { ErrorMessage } from '../error'
 
 export class HomePage extends React.Component {
   /**
@@ -30,6 +31,7 @@ export class HomePage extends React.Component {
    * Get the events
    */
   getEventList() {
+    let that = this
     let myInit = {
       method: 'GET',
       credentials: 'include', //pass cookies, for authentication
@@ -52,13 +54,16 @@ export class HomePage extends React.Component {
       // Change component state
       .then((data) => {
         // TODO work with cache
-        this.setState({ events: data })
+        that.setState({ events: data })
       })
-      .catch((error) => {
-        if (!error.message) {
-          error.message = '🚧 Server unavailable. 🚧'
+      .catch(function (err) {
+        let error = {}
+        if (!err.message) {
+          error = new Error('🚧 Server unavailable. 🚧')
+        } else {
+          error = err
         }
-        this.setState({
+        that.setState({
           errors: error
         })
       })
@@ -75,11 +80,12 @@ export class HomePage extends React.Component {
     var that = this
     return (
       <div >
+        {that.state.errors.message && <ErrorMessage message={that.state.errors.message} />}
         {
           this.state.events.map(function (event) {
             return <Event
               onChange={that.postEventStatusUpdate}
-              errorMessage={that.state.errors.message}
+              errors={that.state.errors}
               event={event}
               lastMonth={that.state.lastMonth}
               key={event.eventId}

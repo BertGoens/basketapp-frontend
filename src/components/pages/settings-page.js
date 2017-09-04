@@ -1,5 +1,5 @@
 import React from 'react';
-import { Error } from '../error'
+import { ErrorMessage } from '../error'
 
 export class SettingsPage extends React.Component {
   /**
@@ -40,13 +40,8 @@ export class SettingsPage extends React.Component {
       if (xhr.status === 200) {
         // success
 
-        // change the component-container state
-        this.setState({
-          errors: {}
-        });
-
-        // Display login message
-        console.log(xhr.response.message)
+        // Display logout message
+        alert(xhr.response.message)
 
         localStorage.removeItem('user')
 
@@ -57,19 +52,16 @@ export class SettingsPage extends React.Component {
         // failure
 
         // change the component state
-        let errors
-        if (xhr.response) {
-          errors = xhr.response.errors ? xhr.response.errors : {};
-          errors.summary = xhr.response.message;
-        } else {
-          errors = { summary: '🚧 Server unavailable. 🚧' }
-        }
-        console.log(errors)
         this.setState({
-          errors
+          errors : xhr.response ? xhr.response.errors : { message: '🚧 Server unavailable 🚧' }
         });
       }
     });
+    xhr.addEventListener('error', function () {
+      this.setState({
+        errors: { message: '🚧 Server unavailable 🚧' }
+      });
+    })
     xhr.send(formData);
   }
   /**
@@ -79,7 +71,7 @@ export class SettingsPage extends React.Component {
     return (
       <div className="row s12">
 
-        {this.state.errors && this.state.errors.message && <Error message={this.state.errors.message} />}
+        {this.state.errors && this.state.errors.message && <ErrorMessage message={this.state.errors.message} />}
 
         <form action="/auth/logout" method="POST" onSubmit={this.processForm} className="col s12">
           <div className="input-field col s12 center-align">

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Error } from './error'
+import { ErrorMessage } from './error'
 
 export const ProfileForm = ({
   onSubmit,
@@ -10,8 +10,6 @@ export const ProfileForm = ({
 }) => (
     <div className="row s12">
       <form action="/profile" onSubmit={onSubmit} className="col s12">
-
-        {errors.message && <Error message={errors.message} />}
 
         <div className="input-field col s12">
           <i className="material-icons prefix">account_circle</i>

@@ -1,6 +1,7 @@
 import React from 'react';
 import setupProfileDateOfBirth from '../../assets/js/setupProfile'
 import { ProfileForm } from '../profile-form'
+import { ErrorMessage } from '../error'
 
 export class ProfilePage extends React.Component {
   /**
@@ -9,10 +10,15 @@ export class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
 
+    let user = JSON.parse(localStorage.getItem('user'))
+    if (!user) {
+      user = {}
+    }
+
     // set the initial component state
     this.state = {
       errors: {},
-      user: JSON.parse(localStorage.getItem('user'))
+      user: user
     };
 
     this.processForm = this.processForm.bind(this);
@@ -36,8 +42,8 @@ export class ProfilePage extends React.Component {
     const sex = encodeURIComponent(this.state.user.individual_sex);
     const date_of_birth = encodeURIComponent(this.state.user.individual_date_of_birth);
 
-    const formData = 
-    `
+    const formData =
+      `
     first_name=${first_name}
     &last_name=${last_name}
     &email=${email}
@@ -57,7 +63,8 @@ export class ProfilePage extends React.Component {
 
         // change the component-container state
         this.setState({
-          errors: {}
+          errors: {},
+          user: JSON.stringify(xhr.response.user)
         });
 
         alert('success')
@@ -66,19 +73,16 @@ export class ProfilePage extends React.Component {
         // failure
 
         // change the component state
-        let errors
-        if (xhr.response) {
-          errors = xhr.response.errors ? xhr.response.errors : {};
-          errors.message = xhr.response.message;
-        } else {
-          errors = { message: '🚧 Server unavailable 🚧' }
-        }
-
         this.setState({
-          errors
+          errors : xhr.response ? xhr.response.errors : { message: '🚧 Server unavailable 🚧' }
         });
       }
     });
+    xhr.addEventListener('error', function () {
+      this.setState({
+        errors: { message: '🚧 Server unavailable 🚧' }
+      });
+    })
     xhr.send(formData);
   }
 
@@ -106,12 +110,15 @@ export class ProfilePage extends React.Component {
   */
   render() {
     return (
-      <ProfileForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+      <div>
+        {this.state.errors.message && <ErrorMessage message={this.state.errors.message} />}
+        <ProfileForm
+          onSubmit={this.processForm}
+          onChange={this.changeUser}
+          errors={this.state.errors}
+          user={this.state.user}
+        />
+      </div>
     )
   }
 }

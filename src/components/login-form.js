@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { Error } from './error'
+import { ErrorMessage } from './error'
 
 export const LoginForm = ({
   onSubmit,
@@ -13,7 +13,7 @@ export const LoginForm = ({
       <div className="z-depth-1 grey lighten-4 row form-action">
         <form className="col s12" method="post" action="/login" onSubmit={onSubmit}>
 
-          {errors.message && <Error message={errors.message} />}
+          {errors.message && <ErrorMessage message={errors.message} />}
 
           <div className='row'>
             <div className='input-field col s12'>

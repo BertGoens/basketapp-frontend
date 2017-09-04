@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const OfflinePage = (props) => {
+export const OfflinePage = () => {
   return (
     <div className="center-align">
       <div className="row">
