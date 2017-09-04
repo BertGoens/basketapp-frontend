@@ -2,6 +2,9 @@
   "name": "basketapp-frontend",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/BertGoens/basketapp-backend.git",
+  "author": "Bert Goens <bertgoens@gmail.com>",
+  "license": "UNLICENSED",
   "dependencies": {
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
