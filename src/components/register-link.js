@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom'
-import React from 'react';
+import React from 'react'
 
-export const RegisterLink = (props) => {
+export const RegisterLink = props => {
   return (
     <div className="row center-align">
-      <div className="col s3"></div>
+      <div className="col s3" />
 
-      <Link to='/auth/register'>
-        <button className='col s6 btn btn-large waves-effect'>
+      <Link to="/auth/register">
+        <button className="col s6 btn btn-large waves-effect">
           <i className="material-icons left">perm_identity</i>
           Register
-      </button>
+        </button>
       </Link>
-      <div className="col s3"></div>
+      <div className="col s3" />
     </div>
   )
 }

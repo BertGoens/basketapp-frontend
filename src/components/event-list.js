@@ -6,12 +6,11 @@ import { ErrorMessage } from './error'
 export const Event = ({ onChange, errorMessage, event, lastMonth }) => {
   return (
     <div>
-      {event.monthName !== lastMonth && <EventMonth monthName={event.monthName} />}
+      {event.monthName !== lastMonth && (
+        <EventMonth monthName={event.monthName} />
+      )}
 
-      < EventDisplay
-        event={event}
-        key={event.eventId}
-      />
+      <EventDisplay event={event} key={event.eventId} />
     </div>
   )
 }
@@ -20,12 +19,12 @@ Event.PropTypes = {
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   event: PropTypes.object.isRequired,
-  lastMonth: PropTypes.string.isRequired
+  lastMonth: PropTypes.string.isRequired,
 }
 
 const EventDisplay = ({ event, dayNumber, dayShortName, startTime }) => {
   return (
-    <div >
+    <div>
       <EventDivider />
 
       <div key={event.id} className="row event-row">
@@ -39,26 +38,50 @@ const EventDisplay = ({ event, dayNumber, dayShortName, startTime }) => {
           <p className="event-location truncate">{event.location}</p>
         </div>
         <div className="col s2 event-status">
-          <span className="event-status-center-helper"></span>
+          <span className="event-status-center-helper" />
           <EventStatus event={event.eventStatus} />
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
 const EventStatus = ({ eventStatus }) => {
   if (eventStatus === 'ok') {
-    return <img className="event-status-image" src="/assets/img/event-status/StatusOk64x64.png" alt="OK" height="26" width="26"></img>
+    return (
+      <img
+        className="event-status-image"
+        src="/assets/img/event-status/StatusOk64x64.png"
+        alt="OK"
+        height="26"
+        width="26"
+      />
+    )
   } else if (eventStatus === 'notOk') {
-    return <img className="event-status-image" src="/assets/img/event-status/StatusNotOk64x64.png" alt="OK" height="26" width="26"></img>
+    return (
+      <img
+        className="event-status-image"
+        src="/assets/img/event-status/StatusNotOk64x64.png"
+        alt="OK"
+        height="26"
+        width="26"
+      />
+    )
   } else {
-    return <img className="event-status-image" src="/assets/img/event-status/StatusUnknown64x64.png" alt="OK" height="26" width="26"></img>
+    return (
+      <img
+        className="event-status-image"
+        src="/assets/img/event-status/StatusUnknown64x64.png"
+        alt="OK"
+        height="26"
+        width="26"
+      />
+    )
   }
 }
 
 EventStatus.PropTypes = {
-  eventStatus: PropTypes.string.isRequired
+  eventStatus: PropTypes.string.isRequired,
 }
 
 // eslint-disable-next-line
@@ -79,20 +102,20 @@ const EventStatusActions = () => {
 }
 
 const EventDivider = () => {
-  return (
-    <div className="divider"></div>
-  )
+  return <div className="divider" />
 }
 
 const EventMonth = ({ monthName }) => {
   return (
     <div>
       <EventDivider />
-      <p className="center-align event-month light-blue-text text-accent-4">{monthName}</p>
+      <p className="center-align event-month light-blue-text text-accent-4">
+        {monthName}
+      </p>
     </div>
   )
 }
 
 EventMonth.PropTypes = {
-  monthName: PropTypes.string.isRequired
+  monthName: PropTypes.string.isRequired,
 }

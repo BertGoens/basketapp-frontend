@@ -1,8 +1,8 @@
-import './connection-status.css';
+import './connection-status.css'
 
-import React from 'react';
+import React from 'react'
 
-export const ConnectionStatus = (props) => {
+export const ConnectionStatus = props => {
   return (
     <div className="connection row">
       <div className="online col s12 center-align">

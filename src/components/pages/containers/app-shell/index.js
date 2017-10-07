@@ -9,7 +9,12 @@ import { MobileHeader } from '../../../../components/mobile-header'
 import { ConnectionStatus } from '../../../../components/connection-status'
 import { MobileNavigation } from '../../../../components/mobile-nav'
 
-import { HomePage, ProfilePage, SettingsPage, NotFoundPage } from '../../../pages'
+import {
+  HomePage,
+  ProfilePage,
+  SettingsPage,
+  NotFoundPage,
+} from '../../../pages'
 
 import connectionStatus from '../../../../assets/js/connectionStatus'
 
@@ -20,18 +25,18 @@ function getTitle(props) {
   return 'Basketapp'
 }
 
-export const AppShell = (props) => {
+export const AppShell = props => {
   const appTitle = getTitle(props)
   return (
-    <div className='app'>
+    <div className="app">
       <MobileHeader appTitle={appTitle} />
       <ConnectionStatus />
       <main>
         <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/home' component={HomePage} />
-          <Route path='/profile' component={ProfilePage} />
-          <Route path='/settings' component={SettingsPage} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/home" component={HomePage} />
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/settings" component={SettingsPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </main>
@@ -40,4 +45,4 @@ export const AppShell = (props) => {
   )
 }
 
-connectionStatus();
+connectionStatus()
