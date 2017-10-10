@@ -6,8 +6,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { PreAuthAppShell } from './components/pages/containers/pre-auth-app-shell'
 import { AppShell } from './components/pages/containers/app-shell'
 
-import registerServiceWorker from './assets/js/registerServiceWorker'
-
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
