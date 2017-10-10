@@ -19,6 +19,8 @@ yarn
 yarn start
 ```
 
+Build a deploy version with: `yarn build`
+
 This will start up the frontend, to start the backend look at the main repo.
 After any code-changes hit save and your changes will immediately be visible!
 
