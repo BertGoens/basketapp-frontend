@@ -5,12 +5,12 @@ export const ErrorMessage = ({ message }) => {
   return (
     <div>
       {message && (
-        <div className="card-panel red accent-1 center">{message}</div>
+        <div className="card-panel red center">{message}</div>
       )}
     </div>
   )
 }
 
 ErrorMessage.propTypes = {
-  errorMessage: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
 }

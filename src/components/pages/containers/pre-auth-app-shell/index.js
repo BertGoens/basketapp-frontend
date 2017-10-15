@@ -1,11 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import '../app-shell.css'
 
-// reset css before loading our css!
-import '../../../../assets/css/reset.css'
-import '../../../../components/app-shell.css'
-
-import { MobileHeader } from '../../../../components/mobile-header'
+import { MobileHeader } from '../../../header/mobile-header'
 import { ConnectionStatus } from '../../../../components/connection-status'
 
 import {

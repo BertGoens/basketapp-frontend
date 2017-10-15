@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-import { RegisterForm } from '../register-form'
-import { LoginLink } from '../login-link'
-import { ResetPasswordLink } from '../reset-password-link'
+import { RegisterForm } from '../register/register-form'
+import { LoginLink } from '../login/login-link'
+import { ResetPasswordLink } from '../resetPassword/reset-password-link'
 
-export class RegisterPage extends React.Component {
+export class RegisterPage extends Component {
   /**
-   * Class constructor.
-   */
+     * Class constructor.
+     *
+     * @param {Object} props for this Component
+     */
   constructor(props) {
     super(props)
 
@@ -20,15 +22,15 @@ export class RegisterPage extends React.Component {
       },
     }
 
-    this.processForm = this.processForm.bind(this)
-    this.changeUser = this.changeUser.bind(this)
+    this.processForm = ::this.processForm
+    this.changeUser = ::this.changeUser
   }
 
   /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Change the user object.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   changeUser(event) {
     const field = event.target.name
     const user = this.state.user
@@ -40,10 +42,10 @@ export class RegisterPage extends React.Component {
   }
 
   /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
@@ -95,8 +97,10 @@ export class RegisterPage extends React.Component {
   }
 
   /**
-   * Render the component.
-   */
+     * Render the component.
+     *
+     * @returns {Component} component register-page
+     */
   render() {
     return (
       <div>

@@ -1,12 +1,14 @@
 import React from 'react'
 import setupProfileDateOfBirth from '../../assets/js/setupProfile'
-import { ProfileForm } from '../profile-form'
-import { ErrorMessage } from '../error'
+import { ProfileForm } from '../profile/profile-form'
+import { ErrorMessage } from '../error/error'
 
 export class ProfilePage extends React.Component {
   /**
-  * Class constructor.
-  */
+     * Class constructor.
+     *
+     * @param {Object} props for this Component
+     */
   constructor(props) {
     super(props)
 
@@ -21,15 +23,15 @@ export class ProfilePage extends React.Component {
       user: user,
     }
 
-    this.processForm = this.processForm.bind(this)
-    this.changeUser = this.changeUser.bind(this)
+    this.processForm = ::this.processForm
+    this.changeUser = ::this.changeUser
   }
 
   /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
@@ -90,10 +92,10 @@ export class ProfilePage extends React.Component {
   }
 
   /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Change the user object.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   changeUser(event) {
     const field = event.target.name
     const user = this.state.user
@@ -109,8 +111,10 @@ export class ProfilePage extends React.Component {
   }
 
   /**
-  * Render the component.
-  */
+     * Render the component.
+     *
+     * @returns {Component} Component
+     */
   render() {
     return (
       <div>

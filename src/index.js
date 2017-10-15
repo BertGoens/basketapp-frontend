@@ -1,18 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import {PreAuthAppShell} from "@@/pages/containers/pre-auth-app-shell/index"
+import {AppShell} from "@@/pages/containers/app-shell/index"
 
-import { PreAuthAppShell } from './components/pages/containers/pre-auth-app-shell'
-import { AppShell } from './components/pages/containers/app-shell'
-
-ReactDOM.render(
+ReactDOM.render((
   <BrowserRouter>
     <Switch>
-      <Route path="/auth" component={PreAuthAppShell} />
-      <Route path="/api" />
-      <Route path="/" render={AppShell} />
+    <Route path="/auth" component={PreAuthAppShell}></Route>
+    <Route path="/api"></Route>
+    <Route path="/" component={AppShell}></Route>
     </Switch>
-  </BrowserRouter>,
-  document.getElementById('root')
-)
+  </BrowserRouter>
+), document.getElementById('root'))

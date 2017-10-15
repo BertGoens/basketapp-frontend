@@ -2,7 +2,7 @@ import './connection-status.css'
 
 import React from 'react'
 
-export const ConnectionStatus = props => {
+export const ConnectionStatus = () => {
   return (
     <div className="connection row">
       <div className="online col s12 center-align">

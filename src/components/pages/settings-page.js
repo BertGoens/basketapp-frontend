@@ -1,10 +1,12 @@
 import React from 'react'
-import { ErrorMessage } from '../error'
+import { ErrorMessage } from '../error/error'
 
 export class SettingsPage extends React.Component {
   /**
-   * Class constructor.
-   */
+     * Class constructor.
+     *
+     * @param {Object} props for this component
+     */
   constructor(props) {
     super(props)
 
@@ -16,14 +18,14 @@ export class SettingsPage extends React.Component {
       },
     }
 
-    this.processForm = this.processForm.bind(this)
+    this.processForm = ::this.processForm
   }
 
   /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
@@ -65,9 +67,12 @@ export class SettingsPage extends React.Component {
     })
     xhr.send(formData)
   }
+
   /**
- * Render the component.
- */
+     * Render the component.
+     *
+     * @returns {Component} returns Component
+     */
   render() {
     return (
       <div className="row s12">

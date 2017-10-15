@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-import { ResetPasswordForm } from '../reset-password-form'
-import { LoginLink } from '../login-link'
-import { RegisterLink } from '../register-link'
+import { ResetPasswordForm } from '../resetPassword/reset-password-form'
+import { LoginLink } from '../login/login-link'
+import { RegisterLink } from '../register/register-link'
 
-export class ResetPasswordPage extends React.Component {
+export class ResetPasswordPage extends Component {
   /**
-   * Class constructor.
-   */
+     * Class constructor.
+     *
+     * @param {Object} props for this Component
+     */
   constructor(props) {
     super(props)
 
@@ -19,15 +21,15 @@ export class ResetPasswordPage extends React.Component {
       },
     }
 
-    this.processForm = this.processForm.bind(this)
-    this.changeUser = this.changeUser.bind(this)
+    this.processForm = ::this.processForm
+    this.changeUser = ::this.changeUser
   }
 
   /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Change the user object.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   changeUser(event) {
     const field = event.target.name
     const user = this.state.user
@@ -39,10 +41,10 @@ export class ResetPasswordPage extends React.Component {
   }
 
   /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
@@ -84,8 +86,10 @@ export class ResetPasswordPage extends React.Component {
   }
 
   /**
-   * Render the component.
-   */
+     * Render the component.
+     *
+     * @returns {Component} Component reset-password-page
+     */
   render() {
     return (
       <div>

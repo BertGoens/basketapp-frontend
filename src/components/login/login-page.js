@@ -1,12 +1,16 @@
 import React from 'react'
-import { LoginForm } from '../login-form'
-import { RegisterLink } from '../register-link'
-import { ResetPasswordLink } from '../reset-password-link'
+import { LoginForm } from './login-form'
+import { RegisterLink } from '../register/register-link'
+import { ResetPasswordLink } from '../resetPassword/reset-password-link'
+import { Auth } from '@/modules'
 
 export class LoginPage extends React.Component {
   /**
-   * Class constructor.
-   */
+     * Class constructor.
+     *
+     * @param {Object} props for this component
+     * @param {Object} history - application state history?
+     */
   constructor(props, history) {
     super(props, history)
 
@@ -19,15 +23,15 @@ export class LoginPage extends React.Component {
       },
     }
 
-    this.processForm = this.processForm.bind(this)
-    this.changeUser = this.changeUser.bind(this)
+    this.processForm = ::this.processForm
+    this.changeUser = ::this.changeUser
   }
 
   /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
@@ -51,14 +55,15 @@ export class LoginPage extends React.Component {
           errors: {},
         })
 
-        // TODO Display login message
-        alert(xhr.response.message)
+        // TODO: Display login message
+        alert(xhr.response.token)
 
         // Save user
-        localStorage.setItem('user', JSON.stringify(xhr.response.user))
+        // Auth.authenticateUser(xhr.response.token)
+        localStorage.setItem('token', xhr.response.token)
 
         // Make a redirect
-        this.props.history.replace('/home')
+        this.props.history.push('/home')
       } else {
         // failure
 
@@ -70,7 +75,7 @@ export class LoginPage extends React.Component {
         })
       }
     })
-    xhr.addEventListener('error', function() {
+    xhr.addEventListener('error', () => {
       this.setState({
         errors: { message: '🚧 Server unavailable 🚧' },
       })
@@ -79,10 +84,10 @@ export class LoginPage extends React.Component {
   }
 
   /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
+     * Change the user object.
+     *
+     * @param {object} event - the JavaScript event object
+     */
   changeUser(event) {
     const field = event.target.name
     const user = this.state.user
@@ -94,8 +99,10 @@ export class LoginPage extends React.Component {
   }
 
   /**
-   * Render the component.
-   */
+     * Render the component.
+     *
+     * @returns {Component} component login-page
+     */
   render() {
     return (
       <div>

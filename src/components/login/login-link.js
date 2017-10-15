@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-export const LoginLink = props => {
+export const LoginLink = () => {
   return (
     <div className="row center-align">
       <div className="col s3" />

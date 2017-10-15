@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ErrorMessage } from './error'
+// import { ErrorMessage } from './error'
 
 export const Event = ({ onChange, errorMessage, event, lastMonth }) => {
   return (

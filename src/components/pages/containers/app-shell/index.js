@@ -1,13 +1,10 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import '../app-shell.css'
 
-// reset css before loading our css!
-import '../../../../assets/css/reset.css'
-import '../../../../components/app-shell.css'
-
-import { MobileHeader } from '../../../../components/mobile-header'
-import { ConnectionStatus } from '../../../../components/connection-status'
-import { MobileNavigation } from '../../../../components/mobile-nav'
+import { MobileHeader } from '@@/header/mobile-header'
+import { ConnectionStatus } from '@@/connection-status'
+import { MobileNavigation } from '@@/header/mobile-nav'
 
 import {
   HomePage,
@@ -16,13 +13,13 @@ import {
   NotFoundPage,
 } from '../../../pages'
 
-import connectionStatus from '../../../../assets/js/connectionStatus'
+import connectionStatus from '@/assets/js/connectionStatus'
 
 function getTitle(props) {
   if (props && props.location) {
-    return props.location.pathname
+    return 'BasketApp | ' + (props.location.pathname.split('/')[1] || 'Home')
   }
-  return 'Basketapp'
+  return 'Basketapp | Home'
 }
 
 export const AppShell = props => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ErrorMessage } from './error'
+import { ErrorMessage } from '../error/error'
 
 export const ResetPasswordForm = ({ onSubmit, onChange, errors }) => {
   return (

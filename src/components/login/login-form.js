@@ -1,18 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ErrorMessage } from './error'
+import { ErrorMessage } from '../error/error'
 
-export const RegisterForm = ({ onSubmit, onChange, errors, user }) => {
+export const LoginForm = ({ onSubmit, onChange, errors, user }) => {
   return (
     <div className="container">
       <div className="z-depth-1 grey lighten-4 row form-action">
         <form
           className="col s12"
           method="post"
-          action="/register"
+          action="/login"
           onSubmit={onSubmit}
         >
-          {errors.message && <ErrorMessage message={errors.message} />}
+          {errors &&
+            errors.message && <ErrorMessage message={errors.message} />}
 
           <div className="row">
             <div className="input-field col s12">
@@ -39,7 +40,7 @@ export const RegisterForm = ({ onSubmit, onChange, errors, user }) => {
                 type="password"
                 name="password"
                 id="password"
-                pattern=".{0}|.{8,50}"
+                pattern=".{0}|.{4,50}"
                 required
                 onChange={onChange}
                 value={user.password}
@@ -52,9 +53,13 @@ export const RegisterForm = ({ onSubmit, onChange, errors, user }) => {
 
           <div className="row center-align">
             <div className="col s3" />
-            <button type="submit" className="col s6 btn btn-large waves-effect">
-              <i className="material-icons left">perm_identity</i>
-              Register
+            <button
+              type="submit"
+              name="btn_login"
+              className="col s6 btn btn-large waves-effect"
+            >
+              <i className="material-icons left">account_circle</i>
+              Login
             </button>
             <div className="col s3" />
           </div>
@@ -64,7 +69,7 @@ export const RegisterForm = ({ onSubmit, onChange, errors, user }) => {
   )
 }
 
-RegisterForm.propTypes = {
+LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,

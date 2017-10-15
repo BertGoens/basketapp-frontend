@@ -1,27 +1,29 @@
-import '../../components/events.css'
-import { apiRequest, Auth } from '../../modules'
+import { GET_Request, Auth } from '@/modules'
+import React, { Component } from 'react'
+import { Event } from '@@/event-list'
+import { ErrorMessage } from '@@/error/error'
+import '@@/events.css'
 
-import React from 'react'
-
-import { Event } from '../../components/event-list'
-import { ErrorMessage } from '../error'
-
-export class HomePage extends React.Component {
+export class HomePage extends Component {
   /**
-   * Class constructor.
-   */
+     * Class constructor.
+     *
+     * @param {Object} props for this component
+     */
   constructor(props) {
     super(props)
 
     // set the initial component state
     this.state = {
-      errors: {},
       events: [],
       lastMonth: null,
+      errors: {
+        message: '',
+      },
     }
 
-    this.getEventList = this.getEventList.bind(this)
-    this.postEventStatusUpdate = this.postEventStatusUpdate.bind(this)
+    this.getEventList = ::this.getEventList
+    this.postEventStatusUpdate = ::this.postEventStatusUpdate
   }
 
   postEventStatusUpdate(eventId, status) {
@@ -29,13 +31,10 @@ export class HomePage extends React.Component {
   }
 
   /**
-   * Get the events
-   */
+     * Get the events
+     */
   getEventList() {
-    let that = this
-
-    let myRequest = apiRequest('GET')('/api/events?results=20')
-
+    const myRequest = GET_Request('/api/events/1')
     fetch(myRequest)
       .then(request => {
         if (!request.ok) {
@@ -44,25 +43,23 @@ export class HomePage extends React.Component {
               Auth.deauthenticateUser()
               this.props.history.replace('/auth/login')
               break
-
             default:
               throw new Error(request.statusText)
-              break
           }
         }
         return request.json()
       })
       .then(data => {
-        that.setState({ events: data })
+        this.setState({ events: data })
       })
-      .catch(function(err) {
-        let error = {}
+      .catch(err => {
+        let error
         if (!err.message) {
           error = new Error('🚧 Server unavailable. 🚧')
         } else {
           error = err
         }
-        that.setState({
+        this.setState({
           errors: error,
         })
       })
@@ -73,22 +70,23 @@ export class HomePage extends React.Component {
   }
 
   /**
-   * Render the component.
-   */
+     * Render the component.
+     *
+     * @return {Component} Component home-page
+     */
   render() {
-    var that = this
     return (
       <div>
-        {that.state.errors.message && (
-          <ErrorMessage message={that.state.errors.message} />
+        {this.state.errors.message && (
+          <ErrorMessage message={this.state.errors.message} />
         )}
-        {this.state.events.map(function(event) {
+        {this.state.events.map(event => {
           return (
             <Event
-              onChange={that.postEventStatusUpdate}
-              errors={that.state.errors}
+              onChange={this.postEventStatusUpdate}
+              errors={this.state.errors}
               event={event}
-              lastMonth={that.state.lastMonth}
+              lastMonth={this.state.lastMonth}
               key={event.eventId}
             />
           )

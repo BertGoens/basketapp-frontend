@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const NotFoundPage = props => {
+export const NotFoundPage = () => {
   return (
     <div className="center-align">
       <div className="row" />
@@ -12,7 +12,7 @@ export const NotFoundPage = props => {
       </div>
       <div className="row">
         <div className="col s12">
-          <img src="/assets/img/pageNotFound.jpg" alt="Page not found" />
+          <img src="src/assets/img/pageNotFound.jpg" alt="Page not found" />
         </div>
       </div>
     </div>
