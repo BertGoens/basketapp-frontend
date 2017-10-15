@@ -31,38 +31,92 @@ export class HomePage extends Component {
   }
 
   /**
-     * Get the events
-     */
+   * Get events
+   */
   getEventList() {
-    const myRequest = GET_Request('/api/events/1')
-    fetch(myRequest)
-      .then(request => {
-        if (!request.ok) {
-          switch (request.status) {
-            case 401:
-              Auth.deauthenticateUser()
-              this.props.history.replace('/auth/login')
-              break
-            default:
-              throw new Error(request.statusText)
-          }
-        }
-        return request.json()
-      })
-      .then(data => {
-        this.setState({ events: data })
-      })
-      .catch(err => {
-        let error
-        if (!err.message) {
-          error = new Error('🚧 Server unavailable. 🚧')
-        } else {
-          error = err
-        }
-        this.setState({
-          errors: error,
-        })
-      })
+    fetch(GET_Request('/api/events/1'))
+      .then(response => this.checkIfRequestHasBeenAllowed(response))
+      .then(acceptedResponse => this.getDataFromResponse(acceptedResponse))
+      .catch(e => this.handleRequestErrors(e))
+  }
+
+  /**
+   * Clear Errors
+   */
+  clearErrors() {
+    this.setState({
+      errors: {},
+    })
+  }
+
+  /**
+   * Set errors
+   * @param {Any} err - Set the errors for the ErrorMessage component 
+   */
+  setErrors(err) {
+    this.setState({
+      errors: err,
+    })
+  }
+  /**
+   * Set the events
+   * 
+   * @param {Array} data - Set the events to display in a list 
+   */
+  setEvents(data) {
+    this.setState({
+      events: data,
+    })
+  }
+
+  /**
+   * Get the data from Response
+   * 
+   * @param {Response} response - Get the events data from response.json() 
+   */
+  getDataFromResponse(response) {
+    response
+      .json()
+      .then(data => this.setEvents(data))
+      .catch(() =>
+        this.setErrors(new Error("Couldn't get the data via Fetch."))
+      )
+  }
+
+  /**
+   * Check if the Request was successful
+   * 
+   * @param {Response} response - Response object
+   */
+  checkIfRequestHasBeenAllowed(response) {
+    return new Promise((resolve, reject) => {
+      this.clearErrors()
+      if (response.status === 200) {
+        resolve(response)
+      } else {
+        reject(response)
+      }
+    })
+  }
+
+  /**
+   * Handle the errors if there were any
+   * 
+   * @param {Reponse} response - Response object 
+   */
+  handleRequestErrors(response) {
+    if (response.status === 401) {
+      Auth.deauthenticateUser()
+      this.props.history.push('/auth/login')
+    } else {
+      let error
+      if (!response.statusText) {
+        error = new Error('🚧 Server unavailable. 🚧')
+      } else {
+        error = response.statusText
+      }
+      this.setErrors(error)
+    }
   }
 
   componentDidMount() {
