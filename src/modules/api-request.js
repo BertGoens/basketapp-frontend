@@ -6,7 +6,7 @@ import { Auth } from '@/modules/auth'
 const configGetRequest = {
   method: 'GET',
   headers: new Headers({
-    Accept: 'application/json',
+    'Content-Type': 'application/json',
   }),
 }
 
@@ -14,7 +14,7 @@ const configPostRequest = {
   method: 'POST',
   body: {},
   headers: new Headers({
-    Accept: 'application/json',
+    'Content-Type': 'application/json',
   }),
 }
 
@@ -22,7 +22,7 @@ const configPutRequest = {
   method: 'PUT',
   body: {},
   headers: new Headers({
-    Accept: 'application/json',
+    'Content-Type': 'application/json',
   }),
 }
 
@@ -30,7 +30,7 @@ const configDeleteRequest = {
   method: 'DELETE',
   body: {},
   headers: new Headers({
-    Accept: 'application/json',
+    'Content-Type': 'application/json',
   }),
 }
 
@@ -45,7 +45,7 @@ const configDeleteRequest = {
  */
 const addBodyToConfig = (config, body) => {
   let newConfig = Object.assign({}, config)
-  newConfig.body = body
+  newConfig.body = JSON.stringify(body)
   return newConfig
 }
 
