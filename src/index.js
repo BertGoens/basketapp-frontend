@@ -13,6 +13,8 @@ class RootComponent extends Component {
     super(props)
   }
 
+  // As for the reason why I changed from component={AppShell} to render
+  // https://stackoverflow.com/questions/43469071/react-react-router-dom-pass-props-to-component
   render() {
     return (
       <BrowserRouter>

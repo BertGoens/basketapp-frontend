@@ -1,6 +1,22 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import '../app-shell.css'
+import styled from 'styled-components'
+
+// TODO: abstract these to individual files to reuse them in other components?
+const Container = styled.div`
+  background: red;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
+
+const Main = styled.div`
+  background: #fff;
+  max-height: 100vh; /* for 100% viewport height */
+  flex: 1;
+  -webkit-overflow-scrolling: touch; /* mobile safari */
+  overflow-y: auto; /* make element scrollable  */
+`
 
 import { MobileHeader } from '@@/header/mobile-header'
 import { ConnectionStatus } from '@@/connection-status'
@@ -23,10 +39,10 @@ function getTitle(props) {
 export const AppShell = props => {
   const appTitle = getTitle(props)
   return (
-    <div className="app">
+    <Container>
       <MobileHeader appTitle={appTitle} />
       <ConnectionStatus />
-      <main>
+      <Main>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/home" component={HomePage} />
@@ -34,9 +50,9 @@ export const AppShell = props => {
           <Route path="/settings" component={SettingsPage} />
           <Route component={NotFoundPage} />
         </Switch>
-      </main>
+      </Main>
       <MobileNavigation />
-    </div>
+    </Container>
   )
 }
 

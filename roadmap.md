@@ -7,10 +7,10 @@ TODO: Improve the project structure
 - Pages and containers is kind of ambigious, think of a better structure for this too
 
 ## Future Implementations
-- A Redux State manager instead of local component state
-- Styled Components instead of css files
+- A Redux State manager instead of local component state (started)
+- Styled Components instead of css files (started)
 - Fix some of the missing files (favico and assets OR images)
 
 ## API
-- Add logout functionality
-- Improve the fetch API (also use the fetch API instead of xhr in other components)
+- Add logout functionality (basic functionality implemented)
+- Improve the fetch API (also use the fetch API instead of xhr in other components) (started)
