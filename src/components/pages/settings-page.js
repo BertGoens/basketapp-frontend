@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { ErrorMessage } from '../error/error'
+import { Auth } from '@/modules'
 
-export class SettingsPage extends React.Component {
+export class SettingsPage extends Component {
   /**
-     * Class constructor.
-     *
-     * @param {Object} props for this component
-     */
+    * Class constructor.
+    *
+    * @param {Object} props for this component
+    */
   constructor(props) {
     super(props)
 
@@ -22,19 +23,25 @@ export class SettingsPage extends React.Component {
   }
 
   /**
-     * Process the form.
-     *
-     * @param {object} event - the JavaScript event object
-     */
+    * Process the form.
+    *
+    * @param {object} event - the JavaScript event object
+    */
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
 
+    // TODO: finish logout implementation by sending a request to /auth/logout
+    if (Auth.isUserAuthenticated()) {
+      Auth.deauthenticateUser()
+    }
+    this.props.history.push('/auth/login')
+
     // create a string for an HTTP body message
-    const formData = ``
+    // const formData = ``
 
     // create an AJAX request
-    const xhr = new XMLHttpRequest()
+    /*const xhr = new XMLHttpRequest()
     xhr.open('post', '/auth/logout')
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
     xhr.responseType = 'json'
@@ -65,14 +72,14 @@ export class SettingsPage extends React.Component {
         errors: { message: '🚧 Server unavailable 🚧' },
       })
     })
-    xhr.send(formData)
+    xhr.send(formData)*/
   }
 
   /**
-     * Render the component.
-     *
-     * @returns {Component} returns Component
-     */
+    * Render the component.
+    *
+    * @returns {Component} returns Component
+    */
   render() {
     return (
       <div className="row s12">

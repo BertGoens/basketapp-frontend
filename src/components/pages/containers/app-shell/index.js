@@ -6,16 +6,14 @@ import { MobileHeader } from '@@/header/mobile-header'
 import { ConnectionStatus } from '@@/connection-status'
 import { MobileNavigation } from '@@/header/mobile-nav'
 
-import {
-  HomePage,
-  ProfilePage,
-  SettingsPage,
-  NotFoundPage,
-} from '../../../pages'
+import { HomePage, ProfilePage, SettingsPage, NotFoundPage } from '@@/pages'
 
 import connectionStatus from '@/assets/js/connectionStatus'
 
 function getTitle(props) {
+  console.log('APPSTATE')
+  console.log(props)
+  console.log('------------------------------')
   if (props && props.location) {
     return 'BasketApp | ' + (props.location.pathname.split('/')[1] || 'Home')
   }

@@ -29,7 +29,7 @@ export class Auth {
   /**
      * Get a token value.
      *
-     * @returns {string} Get the token for localStorage
+     * @returns {string} Get the token from localStorage
      */
 
   static getToken() {

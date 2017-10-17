@@ -6,10 +6,10 @@ import { ResetPasswordLink } from '../resetPassword/reset-password-link'
 
 export class RegisterPage extends Component {
   /**
-     * Class constructor.
-     *
-     * @param {Object} props for this Component
-     */
+    * Class constructor.
+    *
+    * @param {Object} props for this Component
+    */
   constructor(props) {
     super(props)
 
@@ -27,10 +27,10 @@ export class RegisterPage extends Component {
   }
 
   /**
-     * Change the user object.
-     *
-     * @param {object} event - the JavaScript event object
-     */
+    * Change the user object.
+    *
+    * @param {object} event - the JavaScript event object
+    */
   changeUser(event) {
     const field = event.target.name
     const user = this.state.user
@@ -42,10 +42,11 @@ export class RegisterPage extends Component {
   }
 
   /**
-     * Process the form.
-     *
-     * @param {object} event - the JavaScript event object
-     */
+    * Process the form.
+    *
+    * @param {object} event - the JavaScript event object
+    */
+  // TODO: rewrite this function by using Fetch API
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
@@ -97,10 +98,10 @@ export class RegisterPage extends Component {
   }
 
   /**
-     * Render the component.
-     *
-     * @returns {Component} component register-page
-     */
+    * Render the component.
+    *
+    * @returns {Component} component register-page
+    */
   render() {
     return (
       <div>

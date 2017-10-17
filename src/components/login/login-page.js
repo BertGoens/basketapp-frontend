@@ -42,11 +42,13 @@ export class LoginPage extends Component {
     const email = this.state.user.email
     const password = this.state.user.password
 
+    // Gather credentials
     let FORM_DATA = {
       email,
       password,
     }
 
+    // Execute Fetch call
     fetch(POST_Request('/auth/login/jwt', FORM_DATA))
       .then(response =>
         this::API_helpers.checkIfRequestHasBeenAllowed(response)
