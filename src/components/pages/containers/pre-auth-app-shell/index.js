@@ -1,18 +1,18 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import '../app-shell.css'
 
-import { MobileHeader } from '../../../header/mobile-header'
-import { ConnectionStatus } from '../../../../components/connection-status'
-
+import { MobileHeader } from '@@/header/mobile-header'
+import { ConnectionStatus } from '@@/connection-status'
 import {
   LoginPage,
   RegisterPage,
   ResetPasswordPage,
   NotFoundPage,
-} from '../../../pages'
+} from '@@/pages'
 
-import connectionStatus from '../../../../assets/js/connectionStatus'
+import { Main, Container } from '@@/styledComponents'
+
+import connectionStatus from '@/assets/js/connectionStatus'
 
 export const PreAuthAppShell = props => {
   const appTitle = props.location.pathname

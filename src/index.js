@@ -7,6 +7,8 @@ import { appState } from './store'
 import { PreAuthAppShell } from '@@/pages/containers/pre-auth-app-shell/index'
 import { AppShell } from '@@/pages/containers/app-shell/index'
 
+import '@/assets/css/main.css'
+
 @observer
 class RootComponent extends Component {
   constructor(props) {

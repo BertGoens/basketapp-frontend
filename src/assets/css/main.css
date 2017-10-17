@@ -1,0 +1,27 @@
+html,
+body {
+  height: 100%; /* flexbox requirement */
+}
+
+/* fix images being larger then the screensize (mobile mostly) */
+img {
+  max-width: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+/* 
+ * Toast manipulation
+ * Center it for visibility 
+ */
+@media only screen and (max-width: 600px) {
+  #toast-container {
+    min-width: 60%;
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
