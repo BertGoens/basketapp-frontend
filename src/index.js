@@ -4,13 +4,12 @@ import { observer } from 'mobx-react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { appState } from './store'
 
-import { PreAuthAppShell } from '@@/pages/containers/pre-auth-app-shell/index'
-import { AppShell } from '@@/pages/containers/app-shell/index'
+import { PreAuthAppShell, AppShell } from '@@/pages/containers'
 
 import '@/assets/css/main.css'
 
 @observer
-class RootComponent extends Component {
+class Root extends Component {
   constructor(props) {
     super(props)
   }
@@ -40,7 +39,4 @@ class RootComponent extends Component {
   }
 }
 
-ReactDOM.render(
-  <RootComponent appState={appState} />,
-  document.getElementById('root')
-)
+ReactDOM.render(<Root appState={appState} />, document.getElementById('root'))

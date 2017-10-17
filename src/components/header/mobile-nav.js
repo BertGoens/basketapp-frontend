@@ -1,26 +1,24 @@
-import './mobile-nav.css'
-
-import { NavLink } from 'react-router-dom'
 import React from 'react'
+import { MobileNavLink } from '@@/styledComponents'
 
 export const MobileNavigation = props => {
   return (
-    <nav className="mobile-nav">
+    <nav className="mobile-nav blue">
       <div className="row">
         <div className="col s4 center-align">
-          <NavLink to="/home" activeClassName="active">
+          <MobileNavLink exact to="/" activeClassName="active">
             <i className="material-icons">view_list</i>
-          </NavLink>
+          </MobileNavLink>
         </div>
         <div className="col s4 center-align">
-          <NavLink to="/profile" activeClassName="active">
+          <MobileNavLink exact to="/profile" activeClassName="active">
             <i className="material-icons">person_pin</i>
-          </NavLink>
+          </MobileNavLink>
         </div>
         <div className="col s4 center-align">
-          <NavLink to="/settings" activeClassName="active">
+          <MobileNavLink exact to="/settings" activeClassName="active">
             <i className="material-icons">settings</i>
-          </NavLink>
+          </MobileNavLink>
         </div>
       </div>
     </nav>

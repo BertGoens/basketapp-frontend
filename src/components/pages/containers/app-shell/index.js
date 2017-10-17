@@ -11,9 +11,9 @@ import { Main, Container } from '@@/styledComponents'
 import connectionStatus from '@/assets/js/connectionStatus'
 
 function getTitle(props) {
-  console.log('APPSTATE')
-  console.log(props)
-  console.log('------------------------------')
+  // console.log('APPSTATE')
+  // console.log(props)
+  // console.log('------------------------------')
   if (props && props.location) {
     return 'BasketApp | ' + (props.location.pathname.split('/')[1] || 'Home')
   }

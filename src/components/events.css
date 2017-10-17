@@ -6,7 +6,7 @@
 
 .row.event-row {
   margin-bottom: 0;
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
 .event-date {
@@ -41,20 +41,20 @@
 }
 
 .event-status-center-helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
 
 .event-status-image {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .event-status-actions {
-  text-align: center;  /* align the inline(-block) elements horizontally */
-  font: 0/0 a;         /* remove the gap between inline(-block) elements */
+  text-align: center; /* align the inline(-block) elements horizontally */
+  font: 0/0 a; /* remove the gap between inline(-block) elements */
   align-items: stretch;
-  margin-top: auto;    /* Safari vert center hack */
+  margin-top: auto; /* Safari vert center hack */
   margin-bottom: auto; /* Safari vert center hack */
   display: flex;
   flex-direction: row;

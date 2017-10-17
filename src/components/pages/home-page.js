@@ -1,5 +1,5 @@
-import { GET_Request, Auth } from '@/modules'
 import React, { Component } from 'react'
+import { GET_Request, Auth } from '@/modules'
 import { Event } from '@@/event-list'
 import { ErrorMessage } from '@@/error/error'
 import API_helpers from '@@/api'

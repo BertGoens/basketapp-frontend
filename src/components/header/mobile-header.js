@@ -1,12 +1,10 @@
-import './mobile-header.css'
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 export const MobileHeader = props => {
   return (
     <div className="navbar">
-      <nav className="nav-extended">
+      <nav className="nav-extended blue">
         <div className="nav-wrapper">
           <Link to="/" className="brand-logo truncate">
             {props.appTitle}

@@ -56,7 +56,10 @@ export class LoginPage extends Component {
       .then(acceptedResponse =>
         API_helpers.getDataFromResponse(acceptedResponse)
       )
-      .then(data => this.finalizeAuthenication(data))
+      .then(data => {
+        this.finalizeAuthenication(data)
+        Materialize.toast(data.message, 3000)
+      })
       .catch(e => this::API_helpers.handleRequestErrors(e))
   }
 
